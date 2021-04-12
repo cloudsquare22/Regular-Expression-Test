@@ -12,6 +12,7 @@ struct Regular_Expression_TestApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(RegularExpressionData())
         }
     }
 }

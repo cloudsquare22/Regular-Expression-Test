@@ -11,6 +11,7 @@
 		8D44BB272623A44D00622329 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D44BB262623A44D00622329 /* ContentView.swift */; };
 		8D44BB292623A44E00622329 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D44BB282623A44E00622329 /* Assets.xcassets */; };
 		8D44BB2C2623A44E00622329 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D44BB2B2623A44E00622329 /* Preview Assets.xcassets */; };
+		8D44BB3826247C2E00622329 /* RegularExpressionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D44BB3726247C2E00622329 /* RegularExpressionData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		8D44BB282623A44E00622329 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8D44BB2B2623A44E00622329 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8D44BB2D2623A44E00622329 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D44BB3726247C2E00622329 /* RegularExpressionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularExpressionData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +54,7 @@
 		8D44BB232623A44D00622329 /* Regular Expression Test */ = {
 			isa = PBXGroup;
 			children = (
+				8D44BB3626247BC700622329 /* Model */,
 				8D44BB242623A44D00622329 /* Regular_Expression_TestApp.swift */,
 				8D44BB262623A44D00622329 /* ContentView.swift */,
 				8D44BB282623A44E00622329 /* Assets.xcassets */,
@@ -67,6 +70,14 @@
 				8D44BB2B2623A44E00622329 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8D44BB3626247BC700622329 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8D44BB3726247C2E00622329 /* RegularExpressionData.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D44BB272623A44D00622329 /* ContentView.swift in Sources */,
+				8D44BB3826247C2E00622329 /* RegularExpressionData.swift in Sources */,
 				8D44BB252623A44D00622329 /* Regular_Expression_TestApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

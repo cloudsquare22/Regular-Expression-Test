@@ -10,16 +10,19 @@ import SwiftUI
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var regularExpressionData: RegularExpressionData
+    
     var testStrings:[String] = []
     var body: some View {
         NavigationView {
             Form {
                 RegularExpression()
                 Section() {
-                Text("Result")
-                TestString()
-                TestString()
-                TestString()
+                    Text("Result")
+                    Text(self.regularExpressionData.regularExpression)
+                    TestString()
+                    TestString()
+                    TestString()
                 }
             }
             .navigationBarTitle("Test", displayMode: .inline)
@@ -38,14 +41,15 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 struct RegularExpression: View {
-    @State var text: String = ""
+    @EnvironmentObject var regularExpressionData: RegularExpressionData
+
     var body: some View {
         HStack() {
             Image(systemName: "square.fill")
                 .padding(8.0)
                 .foregroundColor(Color.red)
                 .scaleEffect(2)
-            TextField("Regular Expression", text: $text)
+            TextField("Regular Expression", text: self.$regularExpressionData.regularExpression)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
 //            Button(action: {}, label: {
 //                Image(systemName: "clear")
