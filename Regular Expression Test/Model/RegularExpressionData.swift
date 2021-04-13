@@ -22,15 +22,22 @@ class RegularExpressionData: ObservableObject {
     }
     
     func chekcTestString() {
-        self.checks[0].check = true
-        self.checks[2].check = true
-        self.checks[4].check = true
-        self.checks[6].check = true
-        self.checks[8].check = true
+        for check in self.checks {
+            do {
+                let regularExpression = try NSRegularExpression(pattern: self.regularExpression.testString)
+                let matches = regularExpression.matches(in: check.testString, range: NSRange(location: 0, length: check.testString.count))
+                if matches.count > 0 {
+                    check.check = true
+                }
+            }
+            catch {
+                check.check = false
+            }
+        }
     }
 }
 
-struct CheckRegularExpression {
+class CheckRegularExpression {
     var check: Bool = false
     var testString: String = ""
 }

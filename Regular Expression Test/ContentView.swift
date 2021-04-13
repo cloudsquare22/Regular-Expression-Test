@@ -79,7 +79,13 @@ struct TestString: View {
             else {
                 CheckView(color: Color.red)
             }
-            TextField("Test String", text: self.$regularExpressionData.checks[index].testString)
+            TextField("Test String",
+                      text: self.$regularExpressionData.checks[index].testString,
+                      onEditingChanged: {begin in print(begin)},
+                      onCommit: {
+                        self.regularExpressionData.checkRegularExpression()
+                        self.regularExpressionData.chekcTestString()
+                      })
                 .textFieldStyle(RoundedBorderTextFieldStyle())
         }
     }
