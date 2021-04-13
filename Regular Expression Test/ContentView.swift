@@ -19,10 +19,10 @@ struct ContentView: View {
                 RegularExpression()
                 Section() {
                     Text("Result")
-                    Text(self.regularExpressionData.regularExpression)
-                    TestString(index: 0)
-                    TestString(index: 1)
-                    TestString(index: 2)
+//                    Text(self.regularExpressionData.regularExpression)
+                    ForEach(0..<self.regularExpressionData.checks.count) { index in
+                        TestString(index: index)
+                    }
                 }
             }
             .navigationBarTitle("Test", displayMode: .inline)
@@ -45,14 +45,19 @@ struct RegularExpression: View {
 
     var body: some View {
         HStack() {
-            Image(systemName: "square.fill")
-                .padding(8.0)
-                .foregroundColor(Color.red)
-                .scaleEffect(2)
+            if self.regularExpressionData.regularExpression.check == true {
+                CheckView(color: Color.green)
+            }
+            else {
+                CheckView(color: Color.red)
+            }
             TextField("Regular Expression",
-                      text: self.$regularExpressionData.regularExpression,
+                      text: self.$regularExpressionData.regularExpression.testString,
                       onEditingChanged: {begin in print(begin)},
-                      onCommit: {self.regularExpressionData.chekcTestString()})
+                      onCommit: {
+                        self.regularExpressionData.checkRegularExpression()
+                        self.regularExpressionData.chekcTestString()
+                      })
                 .textFieldStyle(RoundedBorderTextFieldStyle())
 //            Button(action: {}, label: {
 //                Image(systemName: "clear")
@@ -68,19 +73,13 @@ struct TestString: View {
 
     var body: some View {
         HStack() {
-            if self.regularExpressionData.checks[self.index] == true {
-                Image(systemName: "square.fill")
-                    .padding(8.0)
-                    .foregroundColor(Color.green)
-                    .scaleEffect(2)
+            if self.regularExpressionData.checks[self.index].check == true {
+                CheckView(color: Color.green)
             }
             else {
-                Image(systemName: "square.fill")
-                    .padding(8.0)
-                    .foregroundColor(Color.red)
-                    .scaleEffect(2)
+                CheckView(color: Color.red)
             }
-            TextField("Test String", text: $text)
+            TextField("Test String", text: self.$regularExpressionData.checks[index].testString)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
         }
     }
@@ -91,5 +90,16 @@ struct AddButton: View {
         Button(action: {}, label: {
             Image(systemName: "plus")
         })
+    }
+}
+
+struct CheckView: View {
+    var color: Color
+    
+    var body: some View {
+        Image(systemName: "square.fill")
+            .padding(8.0)
+            .foregroundColor(self.color)
+            .scaleEffect(2)
     }
 }
