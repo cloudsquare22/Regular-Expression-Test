@@ -8,10 +8,18 @@
 import SwiftUI
 
 class RegularExpressionData: ObservableObject {
-    @Published var regularExpression: CheckRegularExpression = CheckRegularExpression()
-    @Published var checks: [CheckRegularExpression] = [CheckRegularExpression].init(repeating: CheckRegularExpression(), count: 10)
+    @Published var regularExpression: CheckRegularExpression
+    @Published var checks: [CheckRegularExpression]
     
-    func checkRegularExpression() {
+    init() {
+        self.regularExpression = CheckRegularExpression()
+        self.checks = []
+        for _ in 1...10 {
+            self.checks.append(CheckRegularExpression())
+        }
+    }
+    
+    func check() {
         do {
             let _ = try NSRegularExpression(pattern: self.regularExpression.testString)
             self.regularExpression.check = true
@@ -19,9 +27,6 @@ class RegularExpressionData: ObservableObject {
         catch {
             self.regularExpression.check = false
         }
-    }
-    
-    func chekcTestString() {
         for check in self.checks {
             do {
                 let regularExpression = try NSRegularExpression(pattern: self.regularExpression.testString)
@@ -37,7 +42,7 @@ class RegularExpressionData: ObservableObject {
     }
 }
 
-class CheckRegularExpression: ObservableObject {
-    @Published var check: Bool = false
-    @Published var testString: String = ""
+class CheckRegularExpression {
+    var check: Bool = false
+    var testString: String = ""
 }

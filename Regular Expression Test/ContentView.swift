@@ -22,14 +22,14 @@ struct ContentView: View {
 //                    Text(self.regularExpressionData.regularExpression)
                     ForEach(0..<self.regularExpressionData.checks.count) { index in
                         TestString(index: index)
-                            .environmentObject(self.regularExpressionData.checks[index])
                     }
                 }
             }
-            .navigationBarTitle("Test", displayMode: .inline)
-            .navigationBarItems(leading: AddButton(), trailing: EditButton())
-            .onAppear { UITableView.appearance().separatorStyle = .none }
-            .onDisappear { UITableView.appearance().separatorStyle = .singleLine }
+//            .navigationTitle("Test")
+//            .navigationBarTitle("Test", displayMode: .inline)
+//            .navigationBarItems(leading: AddButton(), trailing: EditButton())
+//            .onAppear { UITableView.appearance().separatorStyle = .none }
+//            .onDisappear { UITableView.appearance().separatorStyle = .singleLine }
         }
     }
 }
@@ -54,10 +54,12 @@ struct RegularExpression: View {
             }
             TextField("Regular Expression",
                       text: self.$regularExpressionData.regularExpression.testString,
-                      onEditingChanged: {begin in print(begin)},
+                      onEditingChanged: {begin in
+                        print(self.$regularExpressionData.regularExpression.testString)
+                        self.regularExpressionData.check()
+                      },
                       onCommit: {
-                        self.regularExpressionData.checkRegularExpression()
-                        self.regularExpressionData.chekcTestString()
+//                        self.regularExpressionData.check()
                       })
                 .textFieldStyle(RoundedBorderTextFieldStyle())
 //            Button(action: {}, label: {
@@ -69,24 +71,24 @@ struct RegularExpression: View {
 
 struct TestString: View {
     @EnvironmentObject var regularExpressionData: RegularExpressionData
-    @EnvironmentObject var checkRegularExpression: CheckRegularExpression
-    @State var text: String = ""
     var index: Int
 
     var body: some View {
         HStack() {
-            if self.checkRegularExpression.check == true {
+            if self.regularExpressionData.checks[index].check == true {
                 CheckView(color: Color.green)
             }
             else {
                 CheckView(color: Color.red)
             }
             TextField("Test String",
-                      text: self.$checkRegularExpression.testString,
-                      onEditingChanged: {begin in print(begin)},
+                      text: self.$regularExpressionData.checks[index].testString,
+                      onEditingChanged: {begin in
+                        print(begin)
+                        self.regularExpressionData.check()
+                      },
                       onCommit: {
-                        self.regularExpressionData.checkRegularExpression()
-                        self.regularExpressionData.chekcTestString()
+//                        self.regularExpressionData.check()
                       })
                 .textFieldStyle(RoundedBorderTextFieldStyle())
         }
