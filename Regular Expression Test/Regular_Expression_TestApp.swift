@@ -9,10 +9,13 @@ import SwiftUI
 
 @main
 struct Regular_Expression_TestApp: App {
+    let regularExpressionData: RegularExpressionData = RegularExpressionData()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(RegularExpressionData())
+                .environmentObject(self.regularExpressionData)
+                .environmentObject(self.regularExpressionData.regularExpression)            
         }
     }
 }

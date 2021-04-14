@@ -43,19 +43,19 @@ struct ContentView_Previews: PreviewProvider {
 
 struct RegularExpression: View {
     @EnvironmentObject var regularExpressionData: RegularExpressionData
+    @EnvironmentObject var checkRegularExpression: CheckRegularExpression
 
     var body: some View {
         HStack() {
-            if self.regularExpressionData.regularExpression.check == true {
+            if self.checkRegularExpression.check == true {
                 CheckView(color: Color.green)
             }
             else {
                 CheckView(color: Color.red)
             }
             TextField("Regular Expression",
-                      text: self.$regularExpressionData.regularExpression.testString,
+                      text: self.$checkRegularExpression.testString,
                       onEditingChanged: {begin in
-                        print(self.$regularExpressionData.regularExpression.testString)
                         self.regularExpressionData.check()
                       },
                       onCommit: {
@@ -76,7 +76,10 @@ struct TestString: View {
 
     var body: some View {
         HStack() {
-            if self.checkRegularExpression.check == true {
+            if self.checkRegularExpression.testString.isEmpty == true {
+                CheckView(color: Color.gray)
+            }
+            else if self.checkRegularExpression.check == true {
                 CheckView(color: Color.green)
             }
             else {
