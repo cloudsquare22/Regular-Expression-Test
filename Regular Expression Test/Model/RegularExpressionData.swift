@@ -42,7 +42,7 @@ class RegularExpressionData: ObservableObject {
     }
 }
 
-class CheckRegularExpression {
-    var check: Bool = false
-    var testString: String = ""
+class CheckRegularExpression: ObservableObject {
+    @Published var check: Bool = false
+    @Published var testString: String = ""
 }

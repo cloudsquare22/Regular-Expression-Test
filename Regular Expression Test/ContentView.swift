@@ -22,14 +22,14 @@ struct ContentView: View {
 //                    Text(self.regularExpressionData.regularExpression)
                     ForEach(0..<self.regularExpressionData.checks.count) { index in
                         TestString(index: index)
+                            .environmentObject(self.regularExpressionData.checks[index])
                     }
                 }
             }
-//            .navigationTitle("Test")
-//            .navigationBarTitle("Test", displayMode: .inline)
+            .navigationBarTitle("Test", displayMode: .inline)
 //            .navigationBarItems(leading: AddButton(), trailing: EditButton())
-//            .onAppear { UITableView.appearance().separatorStyle = .none }
-//            .onDisappear { UITableView.appearance().separatorStyle = .singleLine }
+            .onAppear { UITableView.appearance().separatorStyle = .none }
+            .onDisappear { UITableView.appearance().separatorStyle = .singleLine }
         }
     }
 }
@@ -71,18 +71,19 @@ struct RegularExpression: View {
 
 struct TestString: View {
     @EnvironmentObject var regularExpressionData: RegularExpressionData
+    @EnvironmentObject var checkRegularExpression: CheckRegularExpression
     var index: Int
 
     var body: some View {
         HStack() {
-            if self.regularExpressionData.checks[index].check == true {
+            if self.checkRegularExpression.check == true {
                 CheckView(color: Color.green)
             }
             else {
                 CheckView(color: Color.red)
             }
             TextField("Test String",
-                      text: self.$regularExpressionData.checks[index].testString,
+                      text: self.$checkRegularExpression.testString,
                       onEditingChanged: {begin in
                         print(begin)
                         self.regularExpressionData.check()
