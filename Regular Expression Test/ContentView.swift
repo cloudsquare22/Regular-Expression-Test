@@ -35,8 +35,11 @@ struct ContentView: View {
 }
 
 struct ContentView_Previews: PreviewProvider {
+    static let regularExpressionData: RegularExpressionData = RegularExpressionData()
     static var previews: some View {
         ContentView()
+            .environmentObject(ContentView_Previews.regularExpressionData)
+            .environmentObject(ContentView_Previews.regularExpressionData.regularExpression)
 //            .environment(\.locale, .init(identifier: "ja"))
     }
 }
@@ -56,10 +59,10 @@ struct RegularExpression: View {
             TextField("Regular Expression",
                       text: self.$checkRegularExpression.testString,
                       onEditingChanged: {begin in
-                        self.regularExpressionData.check()
+//                        self.regularExpressionData.check()
                       },
                       onCommit: {
-//                        self.regularExpressionData.check()
+                        self.regularExpressionData.check()
                       })
                 .textFieldStyle(RoundedBorderTextFieldStyle())
 //            Button(action: {}, label: {
@@ -89,10 +92,10 @@ struct TestString: View {
                       text: self.$checkRegularExpression.testString,
                       onEditingChanged: {begin in
                         print(begin)
-                        self.regularExpressionData.check()
+//                        self.regularExpressionData.check()
                       },
                       onCommit: {
-//                        self.regularExpressionData.check()
+                        self.regularExpressionData.check()
                       })
                 .textFieldStyle(RoundedBorderTextFieldStyle())
         }

@@ -28,16 +28,7 @@ class RegularExpressionData: ObservableObject {
             self.regularExpression.check = false
         }
         for check in self.checks {
-            do {
-                let regularExpression = try NSRegularExpression(pattern: self.regularExpression.testString)
-                let matches = regularExpression.matches(in: check.testString, range: NSRange(location: 0, length: check.testString.count))
-                if matches.count > 0 {
-                    check.check = true
-                }
-            }
-            catch {
-                check.check = false
-            }
+            check.check(regularExpression: self.regularExpression.testString)
         }
     }
 }
@@ -45,4 +36,20 @@ class RegularExpressionData: ObservableObject {
 class CheckRegularExpression: ObservableObject {
     @Published var check: Bool = false
     @Published var testString: String = ""
+    
+    func check(regularExpression: String) {
+        do {
+            let regularExpression = try NSRegularExpression(pattern: regularExpression)
+            let matches = regularExpression.matches(in: self.testString, range: NSRange(location: 0, length: self.testString.count))
+            if matches.count > 0 {
+                self.check = true
+            }
+            else {
+                self.check = false
+            }
+        }
+        catch {
+            self.check = false
+        }
+    }
 }
