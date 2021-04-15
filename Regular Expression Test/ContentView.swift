@@ -26,11 +26,12 @@ struct ContentView: View {
                     }
                 }
             }
-            .navigationBarTitle("Test", displayMode: .inline)
+            .navigationBarTitle("Regular Expression Test", displayMode: .inline)
 //            .navigationBarItems(leading: AddButton(), trailing: EditButton())
             .onAppear { UITableView.appearance().separatorStyle = .none }
             .onDisappear { UITableView.appearance().separatorStyle = .singleLine }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
@@ -50,7 +51,10 @@ struct RegularExpression: View {
 
     var body: some View {
         HStack() {
-            if self.checkRegularExpression.check == true {
+            if self.checkRegularExpression.testString.isEmpty == true {
+                CheckView(color: Color.gray)
+            }
+            else if self.checkRegularExpression.check == true {
                 CheckView(color: Color.green)
             }
             else {
