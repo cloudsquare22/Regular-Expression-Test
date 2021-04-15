@@ -11,6 +11,7 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var regularExpressionData: RegularExpressionData
+    @State var settingViewOn: Bool = false
     
     var testStrings:[String] = []
     var body: some View {
@@ -27,9 +28,17 @@ struct ContentView: View {
                 }
             }
             .navigationBarTitle("Regular Expression Test", displayMode: .inline)
+            .navigationBarItems(trailing: Button(action: {
+                self.settingViewOn = true
+            }, label: {
+                Image(systemName: "gearshape").font(.title)
+            }))
 //            .navigationBarItems(leading: AddButton(), trailing: EditButton())
             .onAppear { UITableView.appearance().separatorStyle = .none }
             .onDisappear { UITableView.appearance().separatorStyle = .singleLine }
+            .sheet(isPresented: self.$settingViewOn, onDismiss:{print("Close SettingView")}, content: {
+                SettingView()
+            })
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }

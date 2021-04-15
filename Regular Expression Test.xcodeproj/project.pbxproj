@@ -12,6 +12,7 @@
 		8D44BB292623A44E00622329 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D44BB282623A44E00622329 /* Assets.xcassets */; };
 		8D44BB2C2623A44E00622329 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D44BB2B2623A44E00622329 /* Preview Assets.xcassets */; };
 		8D44BB3826247C2E00622329 /* RegularExpressionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D44BB3726247C2E00622329 /* RegularExpressionData.swift */; };
+		8D57AA562628E850000813B5 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D57AA552628E850000813B5 /* SettingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		8D44BB2B2623A44E00622329 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8D44BB2D2623A44E00622329 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D44BB3726247C2E00622329 /* RegularExpressionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularExpressionData.swift; sourceTree = "<group>"; };
+		8D57AA552628E850000813B5 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				8D44BB282623A44E00622329 /* Assets.xcassets */,
 				8D44BB2D2623A44E00622329 /* Info.plist */,
 				8D44BB2A2623A44E00622329 /* Preview Content */,
+				8D57AA552628E850000813B5 /* SettingView.swift */,
 			);
 			path = "Regular Expression Test";
 			sourceTree = "<group>";
@@ -150,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D44BB272623A44D00622329 /* ContentView.swift in Sources */,
+				8D57AA562628E850000813B5 /* SettingView.swift in Sources */,
 				8D44BB3826247C2E00622329 /* RegularExpressionData.swift in Sources */,
 				8D44BB252623A44D00622329 /* Regular_Expression_TestApp.swift in Sources */,
 			);
