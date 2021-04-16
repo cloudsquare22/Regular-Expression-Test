@@ -8,8 +8,25 @@
 import SwiftUI
 
 struct SettingView: View {
+    let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Image("reticon")
+            Text("Regular Expression Test")
+                .font(.largeTitle)
+                .padding(8.0)
+            Text("Version \(version)")
+                .padding(8.0)
+//            Spacer()
+            HStack {
+                Image("cloudsquare")
+                Text("©️ 2021 cloudsquare.jp")
+                    .font(.footnote)
+                
+            }
+            .padding()
+        }
     }
 }
 
