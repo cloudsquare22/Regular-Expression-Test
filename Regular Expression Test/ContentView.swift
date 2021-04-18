@@ -31,7 +31,7 @@ struct ContentView: View {
             .navigationBarItems(trailing: Button(action: {
                 self.settingViewOn = true
             }, label: {
-                Image(systemName: "gearshape").font(.title)
+                Image(systemName: "info.circle").font(.title)
             }))
 //            .navigationBarItems(leading: AddButton(), trailing: EditButton())
             .onAppear { UITableView.appearance().separatorStyle = .none }
