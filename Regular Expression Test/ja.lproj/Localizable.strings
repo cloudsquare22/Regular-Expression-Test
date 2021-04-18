@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  Regular Expression Test
+
+  Created by Shin Inaba on 2021/04/19.
+  
+*/
+"Regular Expression" = "正規表現";
+"Result" = "結果";
+"Test String" = "テスト文字列";
