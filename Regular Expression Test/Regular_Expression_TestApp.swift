@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct Regular_Expression_TestApp: App {
+    @Environment(\.scenePhase) private var scenePhase
     let regularExpressionData: RegularExpressionData = RegularExpressionData()
     
     var body: some Scene {
@@ -16,6 +17,12 @@ struct Regular_Expression_TestApp: App {
             ContentView()
                 .environmentObject(self.regularExpressionData)
                 .environmentObject(self.regularExpressionData.regularExpression)            
+        }
+        .onChange(of: scenePhase) { newScenePhase in
+            print(newScenePhase)
+            if newScenePhase == .background {
+                self.regularExpressionData.saveData()
+            }
         }
     }
 }
