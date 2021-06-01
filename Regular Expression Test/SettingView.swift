@@ -19,13 +19,9 @@ struct SettingView: View {
             Text("Version \(version)")
                 .padding(8.0)
 //            Spacer()
-            HStack {
-                Image("cloudsquare")
-                Text("©️ 2014-2021 cloudsquare.jp")
-                    .font(.footnote)
-                
-            }
-            .padding()
+            Label("©️ 2014-2021 cloudsquare.jp", image: "cloudsquare")
+                .font(.footnote)
+                .padding()
         }
     }
 }
