@@ -10,16 +10,39 @@ import SwiftUI
 class RegularExpressionData: ObservableObject {
     @Published var regularExpression: CheckRegularExpression
     @Published var checks: [CheckRegularExpression]
+    @Published var orientation: UIDeviceOrientation = .portrait
+    @Published var testStringCount = 10
+    
     let userdefaults = UserDefaults.standard
 
     init() {
         self.regularExpression = CheckRegularExpression()
         self.checks = []
-        for _ in 1...10 {
+        for _ in 1...15 {
             self.checks.append(CheckRegularExpression())
         }
         self.loadData()
         self.check()
+
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(forName: UIDevice.orientationDidChangeNotification, object: nil, queue: nil, using: { notification in
+            guard UIDevice.current.orientation != .faceUp && UIDevice.current.orientation != .faceDown && UIDevice.current.orientation != .unknown else {
+                return
+            }
+            guard self.orientation != UIDevice.current.orientation else {
+                return
+            }
+            print("Notification")
+            self.orientation = UIDevice.current.orientation
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                if self.orientation.isLandscape == true {
+                    self.testStringCount = 10
+                }
+                else {
+                    self.testStringCount = 15
+                }
+            }
+        })
     }
     
     func check() {
@@ -40,7 +63,7 @@ class RegularExpressionData: ObservableObject {
         if let re = self.userdefaults.string(forKey: "re") {
             self.regularExpression.testString = re
         }
-        for no in 1...10 {
+        for no in 1...15 {
             if let jsNo = self.userdefaults.string(forKey: "js\(no)") {
                 self.checks[no - 1].testString = jsNo
             }
@@ -52,7 +75,7 @@ class RegularExpressionData: ObservableObject {
         if self.regularExpression.testString.isEmpty == false {
             self.userdefaults.set(self.regularExpression.testString, forKey: "re")
         }
-        for no in 1...10 {
+        for no in 1...15 {
             if self.checks[no - 1].testString.isEmpty == false {
                 self.userdefaults.set(self.checks[no - 1].testString, forKey: "js\(no)")
             }

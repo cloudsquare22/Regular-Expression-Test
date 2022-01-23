@@ -19,7 +19,7 @@ struct SettingView: View {
             Text("Version \(version)")
                 .padding(8.0)
 //            Spacer()
-            Label("©️ 2014-2021 cloudsquare.jp", image: "cloudsquare")
+            Label("©️ 2014-2022 cloudsquare.jp", image: "cloudsquare")
                 .font(.footnote)
                 .padding()
         }

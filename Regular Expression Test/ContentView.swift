@@ -21,7 +21,7 @@ struct ContentView: View {
                 Section() {
                     Text("Result")
 //                    Text(self.regularExpressionData.regularExpression)
-                    ForEach(0..<self.regularExpressionData.checks.count) { index in
+                    ForEach(0..<self.regularExpressionData.testStringCount, id: \.self) { index in
                         TestString(index: index)
                             .environmentObject(self.regularExpressionData.checks[index])
                     }
